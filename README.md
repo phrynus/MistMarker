@@ -1,2 +1,1 @@
-# MistMarker
-雾记
+# MistMarker - 雾记
