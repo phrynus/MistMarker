@@ -1,5 +1,5 @@
 <script setup>
-import search form './structure/search.vue'
+import search from './structure/search.vue'
 </script>
 
 <template>
