@@ -1,17 +1,13 @@
 <script setup>
-// import HelloWorld from './components/HelloWorld.vue'
+import structure  from './components/structure.vue'
 </script>
 
 <template>
 <div>
-  <a href="">123</a>
+  <structure></structure>
 </div>
 </template>
 
 <style lang="scss" scoped>
-div{
-  a{
-    color: red;
-  }
-}
+
 </style>
