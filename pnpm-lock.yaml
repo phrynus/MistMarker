@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  lunar-calendar:
+    specifier: ^0.1.4
+    version: 0.1.4
   node-sass:
     specifier: ^9.0.0
     version: 9.0.0
@@ -1108,6 +1111,10 @@ packages:
   /lru-cache@7.18.3:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
+    dev: false
+
+  /lunar-calendar@0.1.4:
+    resolution: {integrity: sha512-5r87vbg5yg56z/jkf3A+Ur+ZggUTiJw1VATT9P7RELQgWcTNhfJ+OLkNYroSna6r65bMqyaAgapo9vRN40L75A==}
     dev: false
 
   /magic-string@0.30.0:

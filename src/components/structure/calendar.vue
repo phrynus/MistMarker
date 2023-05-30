@@ -1,8 +1,11 @@
 <script setup>
-import { ref, onBeforeMount, onUnmounted } from 'vue';
+import {ref, onBeforeMount, onUnmounted} from 'vue';
+import LunarCalendar from 'lunar-calendar';
 
 const currentDate = ref(new Date());
 const formattedTime = ref([]);
+const formattedDate = ref('');
+const lunarDate = LunarCalendar.solarToLunar(currentDate.value.getFullYear(), currentDate.value.getMonth() + 1, currentDate.value.getDate());
 
 // 格式化时间为 [小时, 分钟]
 const formatTime = (time) => {
@@ -10,21 +13,21 @@ const formatTime = (time) => {
   const minutes = time.getMinutes().toString().padStart(2, '0');
   return [hours, minutes];
 };
+
 // 格式化日期
-const formattheCalendar=(date)=> {
-  const year = date.getFullYear();
+const formatCalendar = (date) => {
   const month = date.getMonth() + 1;
   const day = date.getDate();
   const weekDay = ['日', '一', '二', '三', '四', '五', '六'][date.getDay()];
-  return `${year}年${month}月${day}日`;;
-}
+  return `${month}月${day}日`;
+};
 
 // 每两秒更新一次时间
 let timer;
 
-
 onBeforeMount(() => {
-  formattedTime.value = formatTime(currentDate.value);
+  formattedTime.value = formatTime(new Date());
+  formattedDate.value = formatCalendar(currentDate.value);
   timer = setInterval(() => {
     currentDate.value = new Date();
     formattedTime.value = formatTime(currentDate.value);
@@ -33,48 +36,52 @@ onBeforeMount(() => {
 
 onUnmounted(() => {
   clearInterval(timer);
+  timer = null;
 });
 
-// export { currentDate };
 </script>
 
 <template>
   <div>
-    <div class="dateBox">
-      <div class="time">
-        <span>{{ formattedTime[0]  }}</span>
+    <div className="dateBox">
+      <div className="time">
+        <span>{{ formattedTime[0] }}</span>
         <span>:</span>
-        <span>{{ formattedTime[1]  }}</span>
+        <span>{{ formattedTime[1] }}</span>
       </div>
-      <div class="date" >
-        <span>{{formattheCalendar(currentDate)}}</span>
-        <span>星期{{['日', '一', '二', '三', '四', '五', '六'][currentDate.getDay()]}}</span>
+      <div className="date">
+        <span>{{ formattedDate }}</span>
+        <span>星期{{ ['日', '一', '二', '三', '四', '五', '六'][currentDate.getDay()] }}</span>
+        <span>{{ lunarDate.lunarMonthName + lunarDate.lunarDayName }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.dateBox{
+.dateBox {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .time{
+
+  .time {
     font-size: var(--time-size);
     line-height: var(--time-size);
     font-weight: var(--time-fontWeight);
-    span{
-      vertical-align: unset
+    transition: font 0.2s;
+
+    span {
+      vertical-align: unset;
     }
   }
-  .date{
+
+  .date {
     font-size: 14px;
     line-height: 26px;
-    span{
+
+    span {
       margin: 0 2px;
     }
   }
 }
-
-
 </style>
