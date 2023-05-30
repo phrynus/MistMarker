@@ -1,35 +1,49 @@
+:root {
+  --time-size: 80px;
+  --time-fontWeight: 400;
+  //@media (max-width: 1200px) {
+  //  --time-size: 60px;
+  //}
+  @media (max-width: 768px) {
+    --time-size: 40px;
+  }
+}
+*{
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1px;
+}
 html {
   font-size: 16px;
-//overflow-x: hidden;
-&.overflow {
-   overflow: hidden;
- }
+  //overflow-x: hidden;
+  &.overflow {
+    overflow: hidden;
+  }
+  body {
+    background-color: #fff;
+    color: rgba(66, 66, 66, 0.95);
+    font-family: 'Montserrat', sans-serif, 'Noto Sans TC', sans-serif;
 
-body {
-  background-color: #fff;
-  color: rgba(66, 66, 66, 0.95);
-  font-family: 'Montserrat', sans-serif, 'Noto Sans TC', sans-serif;
+    a {
+      text-decoration: none;
+      color: rgba(66, 66, 66, 0.95);
+      cursor: pointer;
 
-a {
-  text-decoration: none;
-  color:rgba(66, 66, 66, 0.95);
-  cursor: pointer;
+      &:hover {
+        color: rgba(66, 66, 66, 0.95);
+      }
+    }
 
-&:hover {
-   color: rgba(66, 66, 66, 0.95);
- }
-}
+    li {
+      list-style-type: none;
+    }
 
-li {
-  list-style-type: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-  cursor: pointer;
-}
-}
+    img {
+      max-width: 100%;
+      display: block;
+      cursor: pointer;
+    }
+  }
 }
 .icon {
   width: 1em;
