@@ -6,6 +6,7 @@ const close = false
   <div>
     <div class="searchBox">
       <div class="engine">
+        <i class="iconfont icon-arrow-down-filling"></i>
         <div class="img">
           <img src="https://mistmarker.s3.bitiful.net/engine/baidu.png" alt="">
         </div>
@@ -33,8 +34,26 @@ const close = false
   margin: 3vh auto 20px;
   border-radius: 23px;
   box-shadow: 0 0 10px 3px #0000001a;
+  font-size: 14px;
+  transition: .3s;
+  &:hover{
+    background-color: rgba(238, 238, 238, 0.85);
+  }
   .engine{
     height: 100%;
+    position: relative;
+    width: 46px;
+    margin-right: 2px;
+    >.iconfont{
+      position: absolute;
+      right: -1px;
+      top: 52%;
+      transform: translateY(-50%) scale(0.8);
+      display: block;
+      font-size: 12px;
+      opacity: 0.4;
+      color: #000;
+    }
     .img{
       height: 100%;
       display: flex;
