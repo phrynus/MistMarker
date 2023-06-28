@@ -72,6 +72,7 @@ onUnmounted(() => {
 
     span {
       vertical-align: unset;
+      color: #fff;
     }
   }
 
@@ -81,6 +82,7 @@ onUnmounted(() => {
 
     span {
       margin: 0 2px;
+      color: #fff;
     }
   }
 }

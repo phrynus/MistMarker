@@ -1,0 +1,96 @@
+@font-face {
+    font-family: "iconfont"; /* Project id 4089236 */
+    /* Color fonts */
+    src:
+            url('//at.alicdn.com/t/c/font_4089236_xrku32algp.woff2?t=1687938975495') format('woff2'),
+            url('//at.alicdn.com/t/c/font_4089236_xrku32algp.woff?t=1687938975495') format('woff'),
+            url('//at.alicdn.com/t/c/font_4089236_xrku32algp.ttf?t=1687938975495') format('truetype');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close-bold:before {
+    content: "\e685";
+}
+
+.icon-exclaimination:before {
+    content: "\e7f7";
+}
+
+.icon-frown:before {
+    content: "\e77e";
+}
+
+.icon-smile:before {
+    content: "\e783";
+}
+
+.icon-YUAN:before {
+    content: "\e785";
+}
+
+.icon-sync:before {
+    content: "\e786";
+}
+
+.icon-setting:before {
+    content: "\e78e";
+}
+
+.icon-disconnect:before {
+    content: "\e7e1";
+}
+
+.icon-upload:before {
+    content: "\e7ef";
+}
+
+.icon-code:before {
+    content: "\e7fc";
+}
+
+.icon-drag:before {
+    content: "\e842";
+}
+
+.icon-search:before {
+    content: "\e67d";
+}
+
+.icon-github:before {
+    content: "\e885";
+}
+
+.icon-baidu:before {
+    content: "\e609";
+}
+
+.icon-codepen:before {
+    content: "\e60a";
+}
+
+.icon-gitlab:before {
+    content: "\e60b";
+}
+
+.icon-gitee:before {
+    content: "\e60c";
+}
+
+.icon-google:before {
+    content: "\e60d";
+}
+
+.icon-juejin:before {
+    content: "\e60e";
+}
+
+.icon-youtube:before {
+    content: "\e60f";
+}
