@@ -82,6 +82,7 @@ const close = false
       -webkit-user-select: auto;
       flex: 1;
       height: 22px;
+      font-size: 14px;
     }
     .searchIcon{
       height: 100%;
