@@ -38,11 +38,11 @@ const ajax = new Ajax()
 //         console.error("获取version数据时出错:", error);
 //     });
 let mainBg =""
-if(LStorage.get("mainBg")){
-  mainBg =  LStorage.get("mainBg")
+if(LStorage.get("yxgmll")){
+  mainBg =  LStorage.get("yxgmll")
 }else {
-  mainBg = `background-image: url('https://mistmarker.s3.bitiful.net/background/wallhaven-g7319l.webp')`
-  ajax.image("https://mistmarker.s3.bitiful.net/background/wallhaven-g7319l.webp", {
+  mainBg = `background-image: url('https://mistmarker.s3.bitiful.net/background/wallhaven-yxgmll.webp')`
+  ajax.image("https://mistmarker.s3.bitiful.net/background/wallhaven-yxgmll.webp", {
     timeout: 60 * 1000,
     onProgress: ({ loaded, total }) => {
       console.log(loaded, total, `${((loaded / total) * 100).toFixed(2)}%`);
@@ -51,7 +51,7 @@ if(LStorage.get("mainBg")){
       .then((response) => {
         console.log(response);
         mainBg = `background-image: url('${response}')`
-        LStorage.set("mainBg",mainBg)
+        LStorage.set("yxgmll",mainBg)
       })
       .catch((error) => {
         console.log(error);
