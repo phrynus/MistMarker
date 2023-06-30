@@ -1,62 +1,88 @@
-<script setup>
+<script>
 import structure  from './components/structure.vue'
 import {Ajax} from "./public/ajax.js";
-const ajax = new Ajax()
-// 步骤1: 取localStorage中的version
-// const localVersion = localStorage.getItem("version");
-// 步骤2: 发送GET请求获取version数据
-// fetch("https://mistmarker.s3.bitiful.net/version")
-//     .then((response) => response.text())
-//     .then((data) => {
-//         const serverVersion = parseInt(data);
-//         // 步骤3: 判断本地version和服务器version是否相等
-//         if (localVersion !== serverVersion.toString()) {
-//             // 步骤4: 发送GET请求获取mistmarker数据
-//             fetch("https://mistmarker.s3.bitiful.net/mistmarker.lz")
-//                 .then((response) => response.text())
-//                 .then((data) => {
-//                     // 在这里可以处理获取到的mistmarker数据
-//                     let mistmarkerData = JSON.parse(LZString.decompressEncoded(data));
-//                     console.log("获取到的mistmarker:", mistmarkerData);
-//                     // 更新本地mistmarker数据
-//                     localStorage.setItem("mistmarkerJson", JSON.stringify(mistmarkerData));
-//                     // 更新本地engine数据
-//                     localStorage.setItem("engine", JSON.stringify(mistmarkerData.engine));
-//                     // 更新本地category数据
-//                     localStorage.setItem("category", JSON.stringify(mistmarkerData.category));
-//                     // 更新本地version
-//                     localStorage.setItem("version", JSON.stringify(mistmarkerData.version));
-//                 })
-//                 .catch((error) => {
-//                     console.error("获取mistmarker数据时出错:", error);
-//                 });
-//         } else {
-//             console.log("本地version与服务器version相等，无需更新");
-//         }
-//     })
-//     .catch((error) => {
-//         console.error("获取version数据时出错:", error);
-//     });
-let mainBg =""
-if(LStorage.get("yxgmll")){
-  mainBg =  LStorage.get("yxgmll")
-}else {
-  mainBg = `background-image: url('https://mistmarker.s3.bitiful.net/background/wallhaven-yxgmll.webp')`
-  ajax.image("https://mistmarker.s3.bitiful.net/background/wallhaven-yxgmll.webp", {
-    timeout: 60 * 1000,
-    onProgress: ({ loaded, total }) => {
-      console.log(loaded, total, `${((loaded / total) * 100).toFixed(2)}%`);
+export default {
+  name: 'App',
+  data() {
+    return {
+      // Your data properties here
+      ajax : new Ajax(),
+      mistmarker:{
+        mainBg:'https://mistmarker.s3.bitiful.net/background/wallhaven-yxgmll.webp'
+      }
+    };
+  },
+  computed:{
+    versionChange(){
+      return false
     },
-  })
-      .then((response) => {
-        console.log(response);
-        mainBg = `background-image: url('${response}')`
-        LStorage.set("yxgmll",mainBg)
+    version(){
+      return '110'
+    },
+    mainBg:{
+      get() {
+        return LStorage.get("mainBg")?LStorage.get("mainBg"):this.mistmarker.mainBg
+      },
+      set(v) {
+        LStorage.set("mainBg",v)
+      }
+    },
+    engine(){
+      return undefined
+    },
+    category(){
+      return undefined
+    }
+  },
+  components:{
+    structure
+  },
+  methods: {
+    // Your methods here
+    getAjaxMainBg(imgUrl) {
+      // Method logic here
+      this.ajax.image(imgUrl, {
+        timeout: 60 * 1000,
+        onProgress: ({ loaded, total }) => {
+          console.log(loaded, total, `${((loaded / total) * 100).toFixed(2)}%`);
+        },
       })
-      .catch((error) => {
-        console.log(error);
-      });
-}
+          .then((response) => {
+            console.log(response);
+            this.mainBg=`background-image: url('${response}')`
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    },
+  },
+  created() {
+    // 实例已经创建完成之后被调用
+    if(this.versionChange||!this.mainBg){
+      console.log(this.versionChange,!this.mainBg);
+      this.getAjaxMainBg(this.mistmarker.mainBg)
+    }
+
+
+  },
+  mounted() {
+    // 实例已经挂载完成之后被调用
+  },
+  beforeUpdate() {
+    // 数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前
+  },
+  updated() {
+    // 虚拟 DOM 重新渲染和打补丁之后被调用
+  },
+  beforeUnmount() {
+    // 实例销毁之前调用。在这一步，实例仍然完全可用
+  },
+  unmounted() {
+    // 实例销毁后调用。此时，所有的事件监听器和子组件也都被移除
+  },
+};
+
+
 
 
 
