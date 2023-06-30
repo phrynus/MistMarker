@@ -21,7 +21,12 @@ export default {
     },
     mainBg:{
       get() {
-        return LStorage.get("mainBg")?LStorage.get("mainBg"):this.mistmarker.mainBg
+        if(LStorage.get("mainBg")){
+          return LStorage.get("mainBg")
+        }else {
+          this.getAjaxMainBg(this.mistmarker.mainBg)
+          return `background-image: url(${this.mistmarker.mainBg})`
+        }
       },
       set(v) {
         LStorage.set("mainBg",v)
@@ -39,17 +44,17 @@ export default {
   },
   methods: {
     // Your methods here
+
     getAjaxMainBg(imgUrl) {
       // Method logic here
       this.ajax.image(imgUrl, {
-        timeout: 60 * 1000,
+        timeout: 10 * 1000,
         onProgress: ({ loaded, total }) => {
-          console.log(loaded, total, `${((loaded / total) * 100).toFixed(2)}%`);
+          // console.log(loaded, total, `${((loaded / total) * 100).toFixed(2)}%`);
         },
       })
           .then((response) => {
-            console.log(response);
-            this.mainBg=`background-image: url('${response}')`
+            this.mainBg= `background-image: url(${response})`
           })
           .catch((error) => {
             console.log(error);
@@ -58,12 +63,6 @@ export default {
   },
   created() {
     // 实例已经创建完成之后被调用
-    if(this.versionChange||!this.mainBg){
-      console.log(this.versionChange,!this.mainBg);
-      this.getAjaxMainBg(this.mistmarker.mainBg)
-    }
-
-
   },
   mounted() {
     // 实例已经挂载完成之后被调用
@@ -97,7 +96,9 @@ export default {
 
 <style lang="scss" scoped>
 
+
   .main-bg{
+    //background-image: url(var(--data-mainBg));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
