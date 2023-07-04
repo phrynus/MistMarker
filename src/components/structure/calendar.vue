@@ -49,8 +49,8 @@ onUnmounted(() => {
         <span>{{ formattedTime[0] }}</span>
         <span class="separated">:</span>
         <span>{{ formattedTime[1] }}</span>
-        <span class="separated">:</span>
-        <span>{{ formattedTime[2] }}</span>
+<!--        <span class="separated">:</span>-->
+<!--        <span>{{ formattedTime[2] }}</span>-->
       </div>
       <div class="date">
         <span>{{ formattedDate }}</span>
