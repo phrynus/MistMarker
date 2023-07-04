@@ -19,7 +19,7 @@ const formatTime = (time) => {
 const formatCalendar = (date) => {
   const month = date.getMonth() + 1;
   const day = date.getDate();
-  const weekDay = ['日', '一', '二', '三', '四', '五', '六'][date.getDay()];
+  // const weekDay = ['日', '一', '二', '三', '四', '五', '六'][date.getDay()];
   return `${month}月${day}日`;
 };
 
@@ -44,15 +44,15 @@ onUnmounted(() => {
 
 <template>
   <div>
-    <div className="dateBox">
-      <div className="time">
+    <div class="dateBox">
+      <div class="time">
         <span>{{ formattedTime[0] }}</span>
         <span class="separated">:</span>
         <span>{{ formattedTime[1] }}</span>
         <span class="separated">:</span>
         <span>{{ formattedTime[2] }}</span>
       </div>
-      <div className="date">
+      <div class="date">
         <span>{{ formattedDate }}</span>
         <span>星期{{ ['日', '一', '二', '三', '四', '五', '六'][currentDate.getDay()] }}</span>
         <span>{{ lunarDate.lunarMonthName + lunarDate.lunarDayName }}</span>
