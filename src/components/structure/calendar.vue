@@ -11,7 +11,8 @@ const lunarDate = LunarCalendar.solarToLunar(currentDate.value.getFullYear(), cu
 const formatTime = (time) => {
   const hours = time.getHours().toString().padStart(2, '0');
   const minutes = time.getMinutes().toString().padStart(2, '0');
-  return [hours, minutes];
+  const seconds = time.getSeconds().toString().padStart(2, '0');
+  return [hours, minutes,seconds];
 };
 
 // 格式化日期
@@ -31,7 +32,7 @@ onBeforeMount(() => {
   timer = setInterval(() => {
     currentDate.value = new Date();
     formattedTime.value = formatTime(currentDate.value);
-  }, 2000);
+  }, 500);
 });
 
 onUnmounted(() => {
@@ -46,8 +47,10 @@ onUnmounted(() => {
     <div className="dateBox">
       <div className="time">
         <span>{{ formattedTime[0] }}</span>
-        <span>:</span>
+        <span class="separated">:</span>
         <span>{{ formattedTime[1] }}</span>
+        <span class="separated">:</span>
+        <span>{{ formattedTime[2] }}</span>
       </div>
       <div className="date">
         <span>{{ formattedDate }}</span>
@@ -67,12 +70,19 @@ onUnmounted(() => {
   .time {
     font-size: var(--time-size);
     line-height: var(--time-size);
+    //font-family: 'Arial',serif;
     font-weight: var(--time-fontWeight);
     transition: font 0.2s;
 
     span {
       vertical-align: unset;
       color: #fff;
+      &.separated{
+        transform: translateY(-8px);
+        display: inline-block;
+        font-size: 70px;
+        padding: 0 2px;
+      }
     }
   }
 
