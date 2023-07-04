@@ -1,14 +1,11 @@
 <script setup>
-import { ref , computed,defineProps } from 'vue'
+import { computed,defineProps } from 'vue'
 import {Ajax} from "../public/ajax.js";
 import {LStorage} from '../public/LStorage.js'
 
 const ajax = new Ajax()
 const lStorage = new LStorage()
 const _props = defineProps(['M_mainBg'])
-
-const versionChange = ref(false)
-const version = ref(110)
 
 let mainBg = computed({
   get:()=>{
@@ -23,16 +20,10 @@ let mainBg = computed({
     lStorage.set("mainBg",val)
   }
 })
-
-
-
 function  getAjaxMainBg(imgUrl) {
   // Method logic here
   ajax.image(imgUrl, {
     timeout: 10 * 1000,
-    onProgress: ({ loaded, total }) => {
-      // console.log(loaded, total, `${((loaded / total) * 100).toFixed(2)}%`);
-    },
   })
       .then((response) => {
         mainBg.value  = `background-image: url(${response})`

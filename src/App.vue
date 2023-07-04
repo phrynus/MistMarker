@@ -4,8 +4,11 @@ import mainBg from './components/mainBg.vue'
 
 // import {Ajax} from "./public/ajax.js";
 
-
-
+const mistmarker={
+  mainBg:'https://mistmarker.s3.bitiful.net/background/wallhaven-yxgmll.webp',
+  versionChange:false,
+  version:110
+}
 
 </script>
 
