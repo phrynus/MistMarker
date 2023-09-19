@@ -25,3 +25,6 @@ dist-ssr
 /dist/*/*
 /dist/*/*/*
 !/dist/index.html
+src/style.css
+src/style.css.map
+src/style.min.css
