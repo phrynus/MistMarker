@@ -17,12 +17,14 @@ let engineToday = computed({
                 url: "https://www.baidu.com/s?wd={data}"
             }
         }
-    },
-    set: (val) => {
-        // lStorage.set("mainBg", val)
     }
 })
 let searchText = ref("")
+
+function search() {
+    let url = engineToday.value.url.replace("{data}", searchText.value)
+    window.open(url, "_blank")
+}
 </script>
 
 <template>
@@ -35,11 +37,11 @@ let searchText = ref("")
                 </div>
             </div>
             <div class="search">
-                <input type="text" placeholder="输入搜索内容" v-model="searchText">
+                <input type="text" placeholder="输入搜索内容" v-model="searchText" @keyup.enter="search">
                 <div v-show="searchText != ''" @click="searchText = ''" class="searchIcon">
                     <i class="iconfont icon-close-bold"></i>
                 </div>
-                <div v-show="searchText == ''" class="searchIcon">
+                <div v-show="searchText == ''" class="searchIcon" @click="search">
                     <i class="iconfont icon-search"></i>
                 </div>
             </div>
