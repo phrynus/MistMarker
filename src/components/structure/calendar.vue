@@ -62,26 +62,29 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
+*{
+    transition: font .2s;
+}
 .dateBox {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 
   .time {
     font-size: var(--time-size);
     line-height: var(--time-size);
     //font-family: 'Arial',serif;
     font-weight: var(--time-fontWeight);
-    transition: font 0.2s;
+
 
     span {
       vertical-align: unset;
       color: #fff;
       &.separated{
-        transform: translateY(-8px);
+        transform: translateY(-0.08em);
         display: inline-block;
-        font-size: 70px;
-        padding: 0 2px;
+        padding: 0 8px;
       }
     }
   }
@@ -91,7 +94,7 @@ onUnmounted(() => {
     line-height: 26px;
 
     span {
-      margin: 0 2px;
+      margin: 0 4px;
       color: #fff;
     }
   }
