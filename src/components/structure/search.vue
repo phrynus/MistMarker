@@ -71,6 +71,7 @@ function search() {
         position: relative;
         width: 46px;
         margin-right: 2px;
+        cursor:pointer;
 
         >.iconfont {
             position: absolute;
