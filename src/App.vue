@@ -6,7 +6,7 @@ import mainBg from './components/mainBg.vue'
 // import {Ajax} from "./public/ajax.js";
 
 const mistmarker = {
-    mainBg: 'https://o-web.s3.bitiful.net/mistmarker/background/background_wallhaven-yxgmll.png',
+    mainBg: "https://o-web.s3.bitiful.net/mistmarker/background/wallhaven-g7319l.png?fm=webp",
     engine: [
         {
             id: "baidu",
@@ -46,8 +46,6 @@ const mistmarker = {
         }
     ],
     choiceEngine: "google",
-
-
 }
 provide('mistmarker', mistmarker);
 </script>
