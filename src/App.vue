@@ -45,7 +45,7 @@ const mistmarker = {
             url: "https://juejin.cn/search?query={data}"
         }
     ],
-    choiceEngine: "google",
+    choiceEngine: "baidu",
 }
 provide('mistmarker', mistmarker);
 </script>
