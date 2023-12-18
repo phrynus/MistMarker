@@ -9,7 +9,8 @@ const lStorage = new LStorage()
 let mainBg = computed({
     get: () => {
         let bg = lStorage.get("mainBg")
-        if (bg != null) {
+        let bg_name = lStorage.get("mainBg_name")
+        if (bg != null && /.+\/(.+)\./.exec(mistmarker.mainBg)[1]==bg_name) {
             return `background-image: url(${bg})`
         } else {
             getAjaxMainBg(mistmarker.mainBg)
@@ -18,6 +19,7 @@ let mainBg = computed({
     },
     set: (val) => {
         lStorage.set("mainBg", val)
+        lStorage.set("mainBg_name", /.+\/(.+)\./.exec(mistmarker.mainBg)[1])
     }
 })
 function getAjaxMainBg(imgUrl) {
