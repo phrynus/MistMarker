@@ -74,7 +74,7 @@ onUnmounted(() => {
   .time {
     font-size: var(--time-size);
     line-height: var(--time-size);
-    //font-family: 'Arial',serif;
+    font-family: 'HarmonyOS_Sans',serif;
     font-weight: var(--time-fontWeight);
 
 

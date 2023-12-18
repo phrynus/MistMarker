@@ -6,7 +6,10 @@
             url('//at.alicdn.com/t/c/font_4089236_bbjmi1mz0os.woff?t=1687945285081') format('woff'),
             url('//at.alicdn.com/t/c/font_4089236_bbjmi1mz0os.ttf?t=1687945285081') format('truetype');
 }
-
+@font-face {
+	font-family: "HarmonyOS_Sans";
+	src: url("./HarmonyOS_Sans.woff") format("woff");
+}
 .iconfont {
     font-family: "iconfont" !important;
     font-size: 16px;
